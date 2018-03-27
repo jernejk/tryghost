@@ -22,7 +22,8 @@
     "dev": "DEBUG=ghost:* grunt dev",
     "test": "grunt validate --verbose",
     "setup": "yarn install && knex-migrator init && grunt symlink && grunt init || true",
-    "postinstall": "npm config set scripts-prepend-node-path true && knex-migrator init --mgpath node_modules/ghost && grunt symlink && grunt init || true"
+    "preinstall": "npm config set scripts-prepend-node-path true",
+    "postinstall": "knex-migrator init --mgpath node_modules/ghost && grunt symlink && grunt init || true"
   },
   "engines": {
     "node": "^4.5.0 || ^6.9.0 || ^8.9.0",
