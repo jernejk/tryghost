@@ -26,7 +26,7 @@
     "postinstall": "knex-migrator init --mgpath node_modules/ghost && grunt symlink && grunt init || true"
   },
   "engines": {
-    "node": "^4.5.0 || ^6.9.0",
+    "node": "^4.5.0 || ^6.9.0 || ^8.9.0",
     "cli": "^1.3.0"
   },
   "dependencies": {
