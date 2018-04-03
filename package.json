@@ -23,7 +23,7 @@
     "test": "grunt validate --verbose",
     "setup": "yarn install && knex-migrator init && grunt symlink && grunt init || true",
     "preinstall": "npm config set scripts-prepend-node-path true",
-    "postinstall": "npm bin && knex-migrator init"
+    "postinstall": "knex-migrator init && grunt symlink && grunt init || true"
   },
   "engines": {
     "node": "^4.5.0 || ^6.9.0",
