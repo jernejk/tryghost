@@ -21,7 +21,8 @@
     "start": "node index",
     "dev": "DEBUG=ghost:* grunt dev",
     "test": "grunt validate --verbose",
-    "setup": "yarn install && knex-migrator init && grunt symlink && grunt init || true"
+    "setup": "yarn install && knex-migrator init && grunt symlink && grunt init || true",
+    "postinstall": "npm i sqlite3 --save || node knex-migrator.js"
   },
   "engines": {
     "node": "8.9.0 || ^6.9.5",
@@ -92,8 +93,7 @@
     "unidecode": "0.1.8",
     "uuid": "3.2.1",
     "validator": "6.3.0",
-    "xml": "1.0.1",
-    "sqlite3": "4.0.0"    
+    "xml": "1.0.1"
   },
   "optionalDependencies": {
     "sqlite3": "4.0.0"
