@@ -22,7 +22,7 @@
     "dev": "DEBUG=ghost:* grunt dev",
     "test": "grunt validate --verbose",
     "setup": "yarn install && knex-migrator init && grunt symlink && grunt init || true",
-    "postinstall": "npm bin && knex-migrator init"
+    "postinstall": "node knex-migrator.js"
   },
   "engines": {
     "node": "^4.5.0 || ^6.9.0 || 8.9.0",
