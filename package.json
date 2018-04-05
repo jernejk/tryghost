@@ -21,8 +21,7 @@
     "start": "node index",
     "dev": "DEBUG=ghost:* grunt dev",
     "test": "grunt validate --verbose",
-    "setup": "yarn install && knex-migrator init && grunt symlink && grunt init || true",
-    "install": "node-gyp rebuild || node knex-migrator.js"
+    "setup": "yarn install && knex-migrator init && grunt symlink && grunt init || true"
   },
   "engines": {
     "node": "8.9.0 || ^6.9.5",

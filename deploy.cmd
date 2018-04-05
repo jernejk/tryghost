@@ -97,9 +97,9 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 :: 2. Select node version
 call :SelectNodeVersion
 
-:: 3. Install Yarn
+:: 3. Install Yarn and Knex Migrator
 echo Verifying Yarn Install.
-call :ExecuteCmd !NPM_CMD! install yarn -g
+call :ExecuteCmd !NPM_CMD! install yarn knex-migrator -g
 
 :: 4. Install Yarn packages
 echo Installing Yarn Packages.
@@ -109,6 +109,9 @@ IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
+
+:: 5. Do Knex Migrator
+call :ExecuteCmd knex-migrator init
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 goto end
