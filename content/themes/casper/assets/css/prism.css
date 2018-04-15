@@ -215,6 +215,7 @@ pre.line-numbers > code {
 		}
 div.code-toolbar {
 	position: relative;
+	width: 100%;
 }
 
 div.code-toolbar > .toolbar {
