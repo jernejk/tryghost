@@ -36,63 +36,6 @@ into the {body} of the default.hbs template --}}
                 {{content}}
             </section>
 
-            {{!-- Email subscribe form at the bottom of the page --}}
-            {{#if @labs.subscribers}}
-            <section class="subscribe-form">
-                <h3 class="subscribe-form-title">Subscribe to {{@blog.title}}</h3>
-                <p>Get the latest posts delivered right to your inbox</p>
-                {{subscribe_form placeholder="youremail@example.com"}}
-            </section>
-            {{/if}}
-
-            <footer class="post-full-footer">
-                {{!-- Everything inside the #author tags pulls data from the author --}}
-                {{#author}}
-
-                <section class="author-card">
-                    {{#if profile_image}}
-                        <img class="author-profile-image" src="{{profile_image}}" alt="{{name}}" />
-                    {{/if}}
-                    <section class="author-card-content">
-                        <h4 class="author-card-name"><a href="{{url}}">{{name}}</a></h4>
-                        {{#if bio}}
-                            <p>{{bio}}</p>
-                        {{else}}
-                            <p>Read <a href="{{url}}">more posts</a> by this author.</p>
-                        {{/if}}
-                    </section>
-                </section>
-                <div class="post-full-footer-right">
-                    <a class="author-card-button" href="{{url}}">Read More</a>
-                </div>
-
-                {{/author}}
-            </footer>
-
-            {{!-- If you want to use Disqus comments, go to https://disqus.com/ create a new site and remember the shortname (ex: yourdomain-com-au)
-            now go to the ghost admin then the code injection area and the following code to the footer
-            if(disqusSetup){
-                disqusSetup('yourdomain-com-au');
-            } 
-            --}}
-
-            <section class="post-full-comments">
-                <div id="disqus_thread"></div>
-                <script>
-                    
-                    var disqus_config = function () {
-                        this.page.url = '{{url absolute="true"}}';
-                        this.page.identifier = 'ghost-{{comment_id}}';
-                    };
-                    var disqusSetup = function(disqusShortname) {                        
-                            var d = document, s = d.createElement('script');
-                            s.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
-                            s.setAttribute('data-timestamp', +new Date());
-                            (d.head || d.body).appendChild(s);
-                    };
-                </script>
-            </section>
-
         </article>
 
     </div>
@@ -172,6 +115,17 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+{{!-- Email subscribe form at the bottom of the page --}}
+{{#if @labs.subscribers}}
+<section class="subscribe-form">
+    <h3 class="subscribe-form-title">Subscribe to {{@blog.title}}</h3>
+    <p>Get the latest posts delivered right to your inbox</p>
+    {{subscribe_form placeholder="youremail@example.com"}}
+</section>
+{{/if}}
 
 {{/post}}
 
