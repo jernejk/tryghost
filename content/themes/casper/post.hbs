@@ -36,6 +36,23 @@ into the {body} of the default.hbs template --}}
                 {{content}}
             </section>
 
+            <section class="post-full-comments">
+                <div id="disqus_thread"></div>
+                <script>
+                    
+                    var disqus_config = function () {
+                        this.page.url = '{{url absolute="true"}}';
+                        this.page.identifier = 'ghost-{{comment_id}}';
+                    };
+                    var disqusSetup = function(disqusShortname) {                        
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                    };
+                </script>
+            </section>
+
         </article>
 
     </div>
@@ -87,34 +104,13 @@ into the {body} of the default.hbs template --}}
             {{#prev_post}}
                 {{> "post-card"}}
             {{/prev_post}}
+
         </div>
     </div>
 </aside>
 
 {{!-- Floating header which appears on-scroll, included from includes/floating-header.hbs --}}
 {{> floating-header}}
-
-<div class="inner">
-    <div id="disqus_thread"></div>
-    <script>
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-    */
-    var disqus_config = function () {
-        this.page.identifier = 'ghost-{{comment_id}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        this.page.url = 'https://jkdev.me';  // Replace PAGE_URL with your page's canonical URL variable
-    };
-
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://jkdev.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
 
 {{/post}}
 
