@@ -116,17 +116,6 @@ s.setAttribute('data-timestamp', +new Date());
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-
-
-{{!-- Email subscribe form at the bottom of the page --}}
-{{#if @labs.subscribers}}
-<section class="subscribe-form">
-    <h3 class="subscribe-form-title">Subscribe to {{@blog.title}}</h3>
-    <p>Get the latest posts delivered right to your inbox</p>
-    {{subscribe_form placeholder="youremail@example.com"}}
-</section>
-{{/if}}
-
 {{/post}}
 
 {{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
