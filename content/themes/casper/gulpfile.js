@@ -14,6 +14,10 @@ var cssnano = require('cssnano');
 var customProperties = require('postcss-custom-properties');
 var easyimport = require('postcss-easy-import');
 
+var concat = require('gulp-concat');
+var minify = require('gulp-minify');
+var rev = require('gulp-rev');
+
 var swallowError = function swallowError(error) {
     gutil.log(error.toString());
     gutil.beep();
@@ -24,7 +28,7 @@ var nodemonServerInit = function () {
     livereload.listen(1234);
 };
 
-gulp.task('build', ['css'], function (/* cb */) {
+gulp.task('build', ['css', 'pack-js'], function (/* cb */) {
     return nodemonServerInit();
 });
 
@@ -45,6 +49,18 @@ gulp.task('css', function () {
         .pipe(gulp.dest('assets/built/'))
         .pipe(livereload());
 });
+
+gulp.task('pack-js', function () {
+    return gulp.src(['assets/js/*.js'])
+        .pipe(concat('bundle.js'))
+        .pipe(minify({
+            ext:{
+                min:'.js'
+            },
+            noSource: true
+        }))
+        .pipe(gulp.dest('assets/built'));
+    });
 
 gulp.task('watch', function () {
     gulp.watch('assets/css/**', ['css']);
