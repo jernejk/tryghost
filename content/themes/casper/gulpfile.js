@@ -52,7 +52,6 @@ gulp.task('css', function () {
 
 gulp.task('pack-js', function () {
     return gulp.src(['assets/js/*.js'])
-        .pipe(concat('bundle.js'))
         .pipe(minify({
             ext:{
                 min:'.js'
