@@ -293,6 +293,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -moz-font-feature-settings: "liga" on;
+    word-break: break-word;
 }
 
 ::selection {
